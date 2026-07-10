@@ -61,7 +61,7 @@ const Footer = () => {
             <div className="elements-social social-icon-style-02">
               <ul className="small-icon dark justify-content-center">
                 <li><a className="facebook" href="https://www.facebook.com/profile.php?id=61590406484671" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a></li>
-                <li><a className="instagram" href="https://www.instagram.com/volt.construction90" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a></li>
+                <li><a className="instagram" href="https://www.instagram.com/volt.construction" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a></li>
                 <li><a className="tiktok" href="https://www.tiktok.com/@volt_construction" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-tiktok"></i></a></li>
               </ul>
             </div>

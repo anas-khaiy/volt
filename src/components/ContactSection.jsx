@@ -64,7 +64,7 @@ export default function ContactSection() {
                 <div className="col last-paragraph-no-margin xs-mb-20px">
                   <span className="fs-18 alt-font fw-600 d-block text-dark-gray mb-5px">Suivez-nous :</span>
                   <div className="d-flex gap-20px mt-10px">
-                    <a href="https://www.instagram.com/volt.construction90" target="_blank" rel="noopener noreferrer" className="text-dark-gray text-dark-gray-hover fs-22 me-15px"><i className="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/volt.construction" target="_blank" rel="noopener noreferrer" className="text-dark-gray text-dark-gray-hover fs-22 me-15px"><i className="bi bi-instagram"></i></a>
                     <a href="https://www.tiktok.com/@volt_construction" target="_blank" rel="noopener noreferrer" className="text-dark-gray text-dark-gray-hover fs-22 me-15px"><i className="bi bi-tiktok"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61590406484671" target="_blank" rel="noopener noreferrer" className="text-dark-gray text-dark-gray-hover fs-22"><i className="bi bi-facebook"></i></a>
                   </div>
