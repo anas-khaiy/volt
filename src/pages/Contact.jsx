@@ -66,7 +66,7 @@ export default function Contact() {
                 <div className="col">
                   <span className="fs-18 alt-font fw-600 d-block text-dark-gray mb-5px">Nous contacter</span>
                   <a href="tel:+212643976917">+212 643-976917</a><br />
-                  <a href="mailto:volt.construction90@gmail.com" className="text-decoration-line-bottom text-dark-gray">volt.construction90@gmail.com</a>
+                  <a href="mailto:contact@volt-construction.com" className="text-decoration-line-bottom text-dark-gray">contact@volt-construction.com</a>
                 </div>
               </div>
               <h6 className="alt-font fw-700 text-dark-gray mb-15px">Réseaux sociaux</h6>
