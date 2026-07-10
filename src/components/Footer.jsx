@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <footer className="footer-light bg-gradient-very-light-gray pb-0">
-      <div className="container position-relative pt-3 pb-3 overlap-section md-mb-15px" style={{ marginTop: "0" }}>
+      <div className="container position-relative pt-3 pb-3 md-mb-15px">
         <div className="position-absolute left-0px top-0px background-no-repeat background-size-100 h-100 w-100 animation-float" style={{ backgroundImage: "url('/images/demo-real-estate-10.png')" }}></div>
         <div className="row row-cols-1 row-cols-lg-2 justify-content-center align-items-center bg-base-color pt-4 pb-4 ps-6 pe-6 lg-p-5 border-radius-6px g-0">
           <div className="col-xl-6 col-lg-7 md-mb-25px sm-mb-15px position-relative text-center text-lg-start">
