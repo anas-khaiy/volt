@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import ContactSection from "../components/ContactSection";
 
+import { Helmet } from "react-helmet-async";
+
 export default function Services() {
   return (
     <>
+      <Helmet>
+        <title>Nos services - Volt Construction | Électricité & Domotique Marrakech</title>
+        <meta name="description" content="Installation électrique, domotique, caméras de surveillance, climatisation, réseaux fibre optique et plomberie pour riads, villas, studios et bureaux à Marrakech." />
+        <link rel="canonical" href="https://volt-construction-app.firebaseapp.com/services" />
+      </Helmet>
       <section className="cover-background page-title-big-typography ipad-top-space-margin">
         <div className="container">
           <div className="row align-items-center align-items-lg-end justify-content-center extra-very-small-screen g-0">
@@ -22,7 +29,7 @@ export default function Services() {
         <div className="container-fluid">
           <div className="row overlap-height">
             <div className="col-12 p-0 position-relative overlap-gap-section">
-              <img src="/images/projet5.jpeg" alt="" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
+              <img src="/images/projet5.jpeg" alt="Services Volt Construction - Installation électrique et domotique" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
               <div className="alt-font fw-600 fs-350 lg-fs-275 md-fs-250 xs-fs-160 position-absolute right-minus-170px lg-right-0px bottom-50px md-bottom-minus-60px xs-bottom-minus-50px text-white text-outline ls-minus-5px text-outline-width-2px z-index-2">services</div>
             </div>
           </div>
@@ -38,7 +45,7 @@ export default function Services() {
               <div className="feature-box pt-45px pb-25px">
                 <div className="feature-box-icon mb-10px">
                   <Link to="/contact" className="d-block">
-                    <img src="/images/demo-real-estate-icon-apartment.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-apartment.svg" alt="Icône riad" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -50,7 +57,7 @@ export default function Services() {
               <div className="feature-box pt-45px pb-25px">
                 <div className="feature-box-icon mb-10px">
                   <Link to="/contact" className="d-block">
-                    <img src="/images/demo-real-estate-icon-condominium.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-condominium.svg" alt="Icône villa" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -62,7 +69,7 @@ export default function Services() {
               <div className="feature-box pt-45px pb-25px">
                 <div className="feature-box-icon mb-10px">
                   <Link to="/contact" className="d-block">
-                    <img src="/images/demo-real-estate-icon-home.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-home.svg" alt="Icône studio" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -74,7 +81,7 @@ export default function Services() {
               <div className="feature-box pt-45px pb-25px">
                 <div className="feature-box-icon mb-10px">
                   <Link to="/contact" className="d-block">
-                    <img src="/images/demo-real-estate-icon-office.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-office.svg" alt="Icône appartement" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -86,7 +93,7 @@ export default function Services() {
               <div className="feature-box pt-45px pb-25px">
                 <div className="feature-box-icon mb-10px">
                   <Link to="/contact" className="d-block">
-                    <img src="/images/demo-real-estate-icon-shop.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-shop.svg" alt="Icône bureau" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -112,7 +119,7 @@ export default function Services() {
           <div className="row row-cols-1 row-cols-xl-3 row-cols-md-2 justify-content-center scroll-animate" data-animate-type="fadeInUp">
             <div className="col mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-electrique.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-electrique.jpg" alt="Service installation électrique par Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Installation électrique</h4>
@@ -123,7 +130,7 @@ export default function Services() {
             </div>
             <div className="col mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-domotique.webp" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-domotique.webp" alt="Service domotique maison intelligente Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Domotique</h4>
@@ -134,7 +141,7 @@ export default function Services() {
             </div>
             <div className="col mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-cameras.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-cameras.jpg" alt="Service caméras de surveillance Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Caméras de surveillance</h4>
@@ -145,7 +152,7 @@ export default function Services() {
             </div>
             <div className="col lg-mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-climatisation.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-climatisation.jpg" alt="Service climatisation Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Climatisation</h4>
@@ -156,7 +163,7 @@ export default function Services() {
             </div>
             <div className="col sm-mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-reseaux.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-reseaux.jpg" alt="Service réseaux wifi fibre optique Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Réseaux (wifi, fibre optique)</h4>
@@ -167,7 +174,7 @@ export default function Services() {
             </div>
             <div className="col">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-plomberie.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-plomberie.jpg" alt="Service plomberie Volt Construction Marrakech" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Plomberie</h4>
@@ -234,7 +241,7 @@ export default function Services() {
             </div>
             <div className="col-xl-7 col-lg-6 position-relative">
               <figure className="position-relative m-0 scroll-animate" data-animate-type="zoomIn">
-                <img src="/images/service-electrique.jpg" alt="" className="w-100" style={{ maxHeight: "600px", objectFit: "cover" }} />
+                <img src="/images/service-electrique.jpg" alt="Processus installation électrique Volt Construction" className="w-100" style={{ maxHeight: "600px", objectFit: "cover" }} />
               </figure>
             </div>
           </div>

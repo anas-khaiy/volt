@@ -6,6 +6,8 @@ import { ref, get } from "firebase/database";
 
 const PER_PAGE = 12;
 
+import { Helmet } from "react-helmet-async";
+
 export default function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(1);
@@ -36,6 +38,11 @@ export default function Blog() {
 
   return (
     <>
+      <Helmet>
+        <title>Blog & Conseils - Volt Construction | Installation Marrakech</title>
+        <meta name="description" content="Conseils en installation électrique, domotique, climatisation et plomberie pour vos projets à Marrakech. Suivez nos articles et actualités." />
+        <link rel="canonical" href="https://volt-construction-app.firebaseapp.com/blog" />
+      </Helmet>
       <section className="cover-background page-title-big-typography ipad-top-space-margin">
         <div className="container">
           <div className="row align-items-center align-items-lg-end justify-content-center extra-very-small-screen g-0">
@@ -53,7 +60,7 @@ export default function Blog() {
         <div className="container-fluid">
           <div className="row overlap-height">
             <div className="col-12 p-0 position-relative overlap-gap-section">
-              <img src="/images/projet7.jpg" alt="" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
+              <img src="/images/projet7.jpg" alt="Blog Volt Construction - Conseils installation électrique" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
               <div className="alt-font fw-600 fs-350 lg-fs-275 md-fs-250 xs-fs-160 ls-minus-5px xs-ls-minus-2px position-absolute right-minus-50px lg-right-minus-0px bottom-minus-80px md-bottom-minus-60px xs-bottom-minus-50px text-white text-outline text-outline-width-3px">Blog</div>
             </div>
           </div>
@@ -68,7 +75,7 @@ export default function Blog() {
                   <div key={post.id} className="col mb-30px">
                     <div className="card bg-transparent border-0 h-100">
                       <div className="blog-image position-relative overflow-hidden border-radius-6px">
-                        <Link to={"/blog/" + post.slug}><img src={post.image} alt="" style={{ height: "220px", width: "100%", objectFit: "cover" }} /></Link>
+                        <Link to={"/blog/" + post.slug}><img src={post.image} alt={post.altText || post.title} style={{ height: "220px", width: "100%", objectFit: "cover" }} /></Link>
                       </div>
                       <div className="card-body px-0 pb-30px pt-30px xs-pb-15px">
                         <span className="fs-14 text-uppercase"><Link to="#" className="text-dark-gray fw-500 categories-text">{post.category}</Link><Link to="#" className="blog-date">{new Date(post.date).toLocaleDateString("fr-FR")}</Link></span>

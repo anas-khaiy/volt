@@ -4,6 +4,8 @@ import ContactSection from "../components/ContactSection";
 import { db } from "../firebase";
 import { ref, get } from "firebase/database";
 
+import { Helmet } from "react-helmet-async";
+
 export default function DetailsBlog() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
@@ -42,6 +44,12 @@ export default function DetailsBlog() {
 
   return (
     <>
+      <Helmet>
+        <title>{post.metaTitle || post.title} - Volt Construction Blog</title>
+        <meta name="description" content={post.metaDescription || post.content?.slice(0, 160).replace(/<[^>]*>/g, "") || "Article Volt Construction"} />
+        {post.focusKeyword && <meta name="keywords" content={post.focusKeyword} />}
+        <link rel="canonical" href={"https://volt-construction-app.firebaseapp.com/blog/" + post.slug} />
+      </Helmet>
       <section className="top-space-margin">
         <div className="container">
           <div className="row justify-content-center">
@@ -59,7 +67,7 @@ export default function DetailsBlog() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <img src={post.image} className="w-100 border-radius-6px" alt="" style={{ maxHeight: 500, objectFit: "cover" }} />
+              <img src={post.image} className="w-100 border-radius-6px" alt={post.altText || post.title} style={{ maxHeight: 500, objectFit: "cover" }} />
             </div>
           </div>
         </div>

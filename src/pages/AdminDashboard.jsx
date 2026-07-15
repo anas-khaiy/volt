@@ -4,6 +4,8 @@ import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { ref, push, get, remove } from "firebase/database";
 
+const API_BASE = import.meta.env.VITE_API_URL || "https://volt-construction.com";
+
 const CATEGORIES = ["Électricité", "Domotique", "Climatisation", "Sécurité", "Plomberie", "Réseaux"];
 
 const CATEGORY_IMAGES = {
@@ -15,6 +17,13 @@ const CATEGORY_IMAGES = {
   "Réseaux": "/images/service-reseaux.jpg",
 };
 
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const [tab, setTab] = useState("blogs");
@@ -23,8 +32,19 @@ export default function AdminDashboard() {
   const [contacts, setContacts] = useState([]);
   const [newsletters, setNewsletters] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
 
-  const [form, setForm] = useState({ title: "", category: "", content: "", image: "" });
+  const [form, setForm] = useState({
+    title: "",
+    category: "",
+    content: "",
+    image: "",
+    metaTitle: "",
+    metaDescription: "",
+    focusKeyword: "",
+    altText: "",
+    slug: "",
+  });
   const [page, setPage] = useState(1);
   const [filterCat, setFilterCat] = useState("");
   const perPage = 6;
@@ -78,19 +98,39 @@ export default function AdminDashboard() {
     setNewsletters(arr);
   }
 
+  async function handleImageUpload(file) {
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("image", file);
+      const res = await fetch(API_BASE + "/api/upload", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      setForm((prev) => ({ ...prev, image: data.url }));
+    } catch (err) {
+      alert("Upload error: " + err.message);
+    }
+    setUploading(false);
+  }
+
   async function handleAddBlog(e) {
     e.preventDefault();
     if (!form.title || !form.category || !form.content) return;
+    const slug = form.slug || slugify(form.title);
     const newBlog = {
       title: form.title,
       category: form.category,
       content: form.content,
       image: form.image || "/images/blog1.webp",
       date: Date.now(),
-      slug: form.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+      slug,
+      metaTitle: form.metaTitle || form.title,
+      metaDescription: form.metaDescription || form.content.slice(0, 160).replace(/<[^>]*>/g, ""),
+      focusKeyword: form.focusKeyword || "",
+      altText: form.altText || form.title,
     };
     await push(ref(db, "blogs"), newBlog);
-    setForm({ title: "", category: "", content: "", image: "" });
+    setForm({ title: "", category: "", content: "", image: "", metaTitle: "", metaDescription: "", focusKeyword: "", altText: "", slug: "" });
     fetchBlogs();
   }
 
@@ -128,7 +168,7 @@ export default function AdminDashboard() {
       <div className="row">
         <div className="col-12 bg-white border-bottom py-3 px-4 d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-3">
-            <img src="/images/logo2.png" alt="" style={{ height: 35 }} />
+            <img src="/images/logo2.png" alt="Volt Construction logo" style={{ height: 35 }} />
             <span className="alt-font fw-700 fs-18 text-dark-gray">Admin Volt Construction</span>
           </div>
           <div className="d-flex align-items-center gap-3">
@@ -161,27 +201,82 @@ export default function AdminDashboard() {
               <form onSubmit={handleAddBlog}>
                 <div className="mb-3">
                   <label className="form-label fs-14 fw-600">Titre</label>
-                  <input className="form-control" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+                  <input className="form-control" value={form.title} onChange={(e) => {
+                    const title = e.target.value;
+                    setForm((prev) => ({
+                      ...prev,
+                      title,
+                      slug: prev.slug || slugify(title),
+                      metaTitle: prev.metaTitle || title,
+                      altText: prev.altText || title,
+                    }));
+                  }} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label fs-14 fw-600">Slug (URL)</label>
+                  <input className="form-control" value={form.slug} onChange={(e) => setForm({ ...form, slug: slugify(e.target.value) })} placeholder="Auto-généré" />
                 </div>
                 <div className="mb-3">
                   <label className="form-label fs-14 fw-600">Catégorie</label>
                   <select className="form-select" value={form.category} onChange={(e) => {
                     const cat = e.target.value;
-                    setForm({ ...form, category: cat, image: CATEGORY_IMAGES[cat] || form.image });
+                    setForm((prev) => ({ ...prev, category: cat, image: CATEGORY_IMAGES[cat] || prev.image }));
                   }} required>
                     <option value="">Choisir</option>
                     {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
+
+                <hr className="my-3" />
+                <h6 className="alt-font fw-700 text-dark-gray mb-3">📷 Image</h6>
                 <div className="mb-3">
-                  <label className="form-label fs-14 fw-600">Image (URL)</label>
+                  <label className="form-label fs-14 fw-600">Uploader une image</label>
+                  <input className="form-control" type="file" accept="image/*" onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) handleImageUpload(file);
+                  }} />
+                  {uploading && <div className="spinner-border spinner-border-sm text-base-color mt-2" role="status" />}
+                  {form.image && !uploading && (
+                    <div className="mt-2">
+                      <img src={API_BASE + form.image} alt="" style={{ height: 80, objectFit: "cover", borderRadius: 6 }} />
+                      <button type="button" className="btn btn-sm btn-link text-danger p-0 ms-2" onClick={() => setForm((prev) => ({ ...prev, image: "" }))}>Supprimer</button>
+                    </div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label className="form-label fs-14 fw-600">Ou URL directe</label>
                   <input className="form-control" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} placeholder="/images/blog1.webp" />
                 </div>
+                <div className="mb-3">
+                  <label className="form-label fs-14 fw-600">Texte alternatif (alt)</label>
+                  <input className="form-control" value={form.altText} onChange={(e) => setForm({ ...form, altText: e.target.value })} placeholder="Description de l'image pour le SEO" />
+                </div>
+
+                <hr className="my-3" />
+                <h6 className="alt-font fw-700 text-dark-gray mb-3">🔍 SEO</h6>
+                <div className="mb-3">
+                  <label className="form-label fs-14 fw-600">Meta title</label>
+                  <input className="form-control" value={form.metaTitle} onChange={(e) => setForm({ ...form, metaTitle: e.target.value })} placeholder={form.title || "Titre SEO"} maxLength={70} />
+                  <small className="text-muted">{form.metaTitle.length || 0}/70 caractères</small>
+                </div>
+                <div className="mb-3">
+                  <label className="form-label fs-14 fw-600">Meta description</label>
+                  <textarea className="form-control" rows="2" value={form.metaDescription} onChange={(e) => setForm({ ...form, metaDescription: e.target.value })} placeholder="Description pour Google (max 160 caractères)" maxLength={160} />
+                  <small className="text-muted">{form.metaDescription.length || 0}/160 caractères</small>
+                </div>
+                <div className="mb-3">
+                  <label className="form-label fs-14 fw-600">Mot-clé principal (focus keyword)</label>
+                  <input className="form-control" value={form.focusKeyword} onChange={(e) => setForm({ ...form, focusKeyword: e.target.value })} placeholder="ex: installation électrique Marrakech" />
+                </div>
+
+                <hr className="my-3" />
                 <div className="mb-3">
                   <label className="form-label fs-14 fw-600">Contenu</label>
                   <textarea className="form-control" rows="5" value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} required />
                 </div>
-                <button type="submit" className="btn btn-base-color btn-medium w-100 fw-600">Publier</button>
+                <button type="submit" className="btn btn-base-color btn-medium w-100 fw-600" disabled={uploading}>
+                  {uploading ? "Upload en cours..." : "Publier l'article"}
+                </button>
               </form>
             </div>
           </div>
@@ -200,6 +295,8 @@ export default function AdminDashboard() {
                     <tr>
                       <th>Titre</th>
                       <th>Catégorie</th>
+                      <th>Slug</th>
+                      <th>Mot-clé</th>
                       <th>Date</th>
                       <th>Action</th>
                     </tr>
@@ -209,6 +306,8 @@ export default function AdminDashboard() {
                       <tr key={b.id}>
                         <td className="fw-600">{b.title}</td>
                         <td><span className="badge bg-base-color-transparent text-base-color">{b.category}</span></td>
+                        <td className="fs-14 text-muted" style={{ maxWidth: 140, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{b.slug || "—"}</td>
+                        <td><span className="badge bg-light text-dark">{b.focusKeyword || "—"}</span></td>
                         <td className="fs-14">{formatDate(b.date)}</td>
                         <td>
                           <button className="btn btn-sm btn-outline-danger" onClick={() => handleDeleteBlog(b.id)}>Supprimer</button>
@@ -216,7 +315,7 @@ export default function AdminDashboard() {
                       </tr>
                     ))}
                     {paged.length === 0 && (
-                      <tr><td colSpan="4" className="text-center text-muted py-4">Aucun article</td></tr>
+                      <tr><td colSpan="6" className="text-center text-muted py-4">Aucun article</td></tr>
                     )}
                   </tbody>
                 </table>

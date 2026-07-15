@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import ContactSection from "../components/ContactSection";
 
+import { Helmet } from "react-helmet-async";
+
 export default function About() {
   return (
     <>
+      <Helmet>
+        <title>À propos - Volt Construction | Électricien à Marrakech</title>
+        <meta name="description" content="Découvrez Volt Construction : plus de 10 ans d'expérience en installation électrique, domotique, climatisation et plomberie à Marrakech. 50+ clients satisfaits." />
+        <link rel="canonical" href="https://volt-construction-app.firebaseapp.com/about" />
+      </Helmet>
       <section className="cover-background page-title-big-typography ipad-top-space-margin">
         <div className="container">
           <div className="row align-items-center align-items-lg-end justify-content-center extra-very-small-screen g-0">
@@ -21,7 +28,7 @@ export default function About() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12 p-0 position-relative">
-              <img src="/images/slide1.webp" alt="" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
+              <img src="/images/slide1.webp" alt="Volt Construction - À propos de notre entreprise d'électricité" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
               <div className="alt-font fw-600 fs-350 lg-fs-275 md-fs-250 xs-fs-160 ls-minus-5px xs-ls-minus-2px position-absolute right-minus-50px lg-right-0px bottom-minus-80px md-bottom-minus-60px xs-bottom-minus-40px text-white text-outline text-outline-width-3px">Volt</div>
             </div>
           </div>
@@ -32,7 +39,7 @@ export default function About() {
           <div className="row align-items-center">
             <div className="col-lg-6 order-2 order-lg-1 position-relative align-self-end">
               <figure className="position-relative m-0 scroll-animate" data-animate-type="zoomIn">
-                <img src="/images/slide2.webp" className="w-100 border-radius-6px" alt="" style={{ height: "700px", objectFit: "cover" }} />
+                <img src="/images/slide2.webp" className="w-100 border-radius-6px" alt="Volt Construction 10 ans d'expérience en installation électrique" style={{ height: "700px", objectFit: "cover" }} />
                 <figcaption className="w-180px bg-white p-30px pt-20px border-radius-8px position-absolute top-150px right-minus-30px lg-right-0px overflow-hidden box-shadow-medium animation-float">
                   <span className="alt-font fs-100 fw-700 text-white d-block position-relative z-index-1">10</span>
                   <div className="alt-font fw-500 fs-24 d-block text-dark-gray lh-26 ls-minus-05px">Années <span className="fw-700">d'expérience.</span></div>
@@ -78,7 +85,7 @@ export default function About() {
             <div className="col icon-with-text-style-07 transition-inner-all md-mb-30px">
               <div className="bg-white feature-box box-shadow-quadruple-large box-shadow-quadruple-large-hover text-center p-16 lg-p-14 border-radius-10px last-paragraph-no-margin h-100">
                 <div className="feature-box-icon mb-20px">
-                  <img src="/images/demo-real-estate-about-03.png" className="h-80px" alt="" />
+                  <img src="/images/demo-real-estate-about-03.png" className="h-80px" alt="Icône installations aux normes" />
                 </div>
                 <div className="feature-box-content">
                   <span className="alt-font fw-600 text-dark-gray fs-20 d-inline-block mb-5px">Installations aux normes</span>
@@ -89,7 +96,7 @@ export default function About() {
             <div className="col icon-with-text-style-07 transition-inner-all md-mb-30px">
               <div className="bg-white feature-box box-shadow-quadruple-large box-shadow-quadruple-large-hover text-center p-16 lg-p-14 border-radius-10px last-paragraph-no-margin h-100">
                 <div className="feature-box-icon mb-20px">
-                  <img src="/images/demo-real-estate-about-04.png" className="h-80px" alt="" />
+                  <img src="/images/demo-real-estate-about-04.png" className="h-80px" alt="Icône techniciens certifiés" />
                 </div>
                 <div className="feature-box-content">
                   <span className="alt-font fw-600 text-dark-gray fs-20 d-inline-block mb-5px">Techniciens certifiés</span>
@@ -100,7 +107,7 @@ export default function About() {
             <div className="col icon-with-text-style-07 transition-inner-all xs-mb-30px">
               <div className="bg-white feature-box box-shadow-quadruple-large box-shadow-quadruple-large-hover text-center p-16 lg-p-14 border-radius-10px last-paragraph-no-margin h-100">
                 <div className="feature-box-icon mb-20px">
-                  <img src="/images/demo-real-estate-about-05.png" className="h-80px" alt="" />
+                  <img src="/images/demo-real-estate-about-05.png" className="h-80px" alt="Icône garantie complète" />
                 </div>
                 <div className="feature-box-content">
                   <span className="alt-font fw-600 text-dark-gray fs-20 d-inline-block mb-5px">Garantie complète</span>
@@ -111,7 +118,7 @@ export default function About() {
             <div className="col icon-with-text-style-07 transition-inner-all">
               <div className="bg-white feature-box box-shadow-quadruple-large box-shadow-quadruple-large-hover text-center p-16 lg-p-14 border-radius-10px last-paragraph-no-margin h-100">
                 <div className="feature-box-icon mb-20px">
-                  <img src="/images/demo-real-estate-about-06.png" className="h-80px" alt="" />
+                  <img src="/images/demo-real-estate-about-06.png" className="h-80px" alt="Icône suivi personnalisé" />
                 </div>
                 <div className="feature-box-content">
                   <span className="alt-font fw-600 text-dark-gray fs-20 d-inline-block mb-5px">Suivi personnalisé</span>
@@ -139,7 +146,7 @@ export default function About() {
           <div className="row align-items-center justify-content-center">
             <div className="col-lg-6 text-end md-mb-50px">
               <figure className="position-relative m-0 scroll-animate" data-animate-type="zoomIn">
-                <img src="/images/slide3.webp" className="w-90 border-radius-6px" alt="" style={{ maxHeight: "450px", objectFit: "cover" }} />
+                <img src="/images/slide3.webp" className="w-90 border-radius-6px" alt="Volt Construction avis clients 50 satisfaits" style={{ maxHeight: "450px", objectFit: "cover" }} />
                 <figcaption className="position-absolute bg-dark-gray border-radius-10px box-shadow-quadruple-large bottom-100px xs-bottom-minus-20px left-minus-30px md-left-0px w-230px xs-w-210px text-center last-paragraph-no-margin animation-float">
                   <div className="bg-white pt-35px pb-35px border-radius-8px mb-15px position-relative top-minus-1px">
                     <h1 className="fw-700 ls-minus-3px text-dark-gray mb-0 alt-font">50</h1>

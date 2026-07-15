@@ -33,7 +33,7 @@ export default function AdminLogin() {
     <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh", background: "#f5f5f5" }}>
       <div className="bg-white p-5 border-radius-10px box-shadow-large" style={{ width: "100%", maxWidth: 420 }}>
         <div className="text-center mb-4">
-          <img src="/images/logo2.png" alt="" style={{ height: 50 }} />
+          <img src="/images/logo2.png" alt="Volt Construction logo" style={{ height: 50 }} />
           <h3 className="alt-font fw-700 text-dark-gray mt-3">Admin Volt Construction</h3>
         </div>
         {error && (

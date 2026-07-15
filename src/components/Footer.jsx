@@ -56,7 +56,7 @@ const Footer = () => {
       <div className="container">
         <div className="row justify-content-center text-center py-5">
           <div className="col-lg-4">
-            <Link to="/" className="footer-logo mb-10px d-inline-block"><img src="/images/logo2.png" alt="" style={{ height: "30px" }} /></Link>
+            <Link to="/" className="footer-logo mb-10px d-inline-block"><img src="/images/logo2.png" alt="Volt Construction logo" style={{ height: "30px" }} /></Link>
             <p className="mb-20px">Installation électrique, domotique, climatisation et sécurité à Marrakech et ses environs.</p>
             <div className="elements-social social-icon-style-02">
               <ul className="small-icon dark justify-content-center">

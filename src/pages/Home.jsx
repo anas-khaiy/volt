@@ -4,6 +4,8 @@ import ContactSection from "../components/ContactSection";
 import { db } from "../firebase";
 import { ref, get } from "firebase/database";
 
+import { Helmet } from "react-helmet-async";
+
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const swiperRef = useRef(null);
@@ -48,11 +50,16 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Volt Construction - Électricité & Domotique à Marrakech</title>
+        <meta name="description" content="Installation électrique, domotique, climatisation, caméras de surveillance, réseaux et plomberie pour riads, villas, studios et bureaux à Marrakech. Devis gratuit." />
+        <link rel="canonical" href="https://volt-construction-app.firebaseapp.com/" />
+      </Helmet>
       <section className="p-0 top-space-margin">
         <div ref={swiperRef} className="swiper full-screen md-h-600px sm-h-500px swiper-number-pagination-style-01 magic-cursor drag-cursor" data-slider-options='{ "slidesPerView": 1, "loop": true, "pagination": { "el": ".swiper-number", "clickable": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 4000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }' data-number-pagination="1" style={{ cursor: 'none' }}>
           <div className="swiper-wrapper">
             <div className="swiper-slide" style={{ position: 'relative', overflow: 'hidden' }}>
-              <img src="/images/slide1.webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/images/slide1.webp" alt="Volt Construction - Installation électrique riad Marrakech" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               <div className="container h-100" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="row align-items-center h-100">
                   <div className="col-md-8 position-relative text-white scroll-animate" data-animate-type="fadeIn">
@@ -65,7 +72,7 @@ export default function Home() {
               </div>
             </div>
             <div className="swiper-slide" style={{ position: 'relative', overflow: 'hidden' }}>
-              <img src="/images/slide2.webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/images/slide2.webp" alt="Volt Construction - Villa connectée et sécurisée" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               <div className="container h-100" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="row align-items-center h-100">
                   <div className="col-md-8 position-relative text-white scroll-animate" data-animate-type="fadeIn">
@@ -78,7 +85,7 @@ export default function Home() {
               </div>
             </div>
             <div className="swiper-slide" style={{ position: 'relative', overflow: 'hidden' }}>
-              <img src="/images/slide3.webp" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/images/slide3.webp" alt="Volt Construction - Électricité optimisée petit espace" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               <div className="container h-100" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="row align-items-center h-100">
                   <div className="col-md-8 position-relative text-white scroll-animate" data-animate-type="fadeIn">
@@ -105,7 +112,7 @@ export default function Home() {
           <div className="row align-items-center justify-content-center">
             <div className="col-lg-6 md-mb-50px position-relative">
               <figure className="position-relative mb-0 overflow-hidden border-radius-6px scroll-animate" data-animate-type="zoomIn">
-                <img src="/images/service-electrique.jpg" alt="" className="w-100" style={{ maxHeight: "580px", objectFit: "cover" }} />
+                <img src="/images/service-electrique.jpg" alt="Installation électrique par Volt Construction à Marrakech" className="w-100" style={{ maxHeight: "580px", objectFit: "cover" }} />
                 <figcaption className="position-absolute border-radius-left-8px bg-base-color right-0px bottom-0px p-45px last-paragraph-no-margin">
                   <i className="feather icon-feather-home icon-medium text-white mb-15px d-block"></i>
                   <h4 className="alt-font fw-700 text-white mb-0 d-block">50</h4>
@@ -164,7 +171,7 @@ export default function Home() {
                 <div className="feature-box-icon mb-10px">
                   <div className="text-uppercase alt-font fw-700 text-base-color fs-12 lh-22 bg-base-color-transparent border-radius-4px position-absolute left-18px top-18px ps-10px pe-10px">20K</div>
                   <Link to="/services" className="d-block">
-                    <img src="/images/demo-real-estate-icon-apartment.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-apartment.svg" alt="Icône riad" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -177,7 +184,7 @@ export default function Home() {
                 <div className="feature-box-icon mb-10px">
                   <div className="text-uppercase alt-font fw-700 text-base-color fs-12 lh-22 bg-base-color-transparent border-radius-4px position-absolute left-18px top-18px ps-10px pe-10px">18K</div>
                   <Link to="/services" className="d-block">
-                    <img src="/images/demo-real-estate-icon-condominium.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-condominium.svg" alt="Icône villa" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -190,7 +197,7 @@ export default function Home() {
                 <div className="feature-box-icon mb-10px">
                   <div className="text-uppercase alt-font fw-700 text-base-color fs-12 lh-22 bg-base-color-transparent border-radius-4px position-absolute left-18px top-18px ps-10px pe-10px">22K</div>
                   <Link to="/services" className="d-block">
-                    <img src="/images/demo-real-estate-icon-home.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-home.svg" alt="Icône studio" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -203,7 +210,7 @@ export default function Home() {
                 <div className="feature-box-icon mb-10px">
                   <div className="text-uppercase alt-font fw-700 text-base-color fs-12 lh-22 bg-base-color-transparent border-radius-4px position-absolute left-18px top-18px ps-10px pe-10px">09K</div>
                   <Link to="/services" className="d-block">
-                    <img src="/images/demo-real-estate-icon-office.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-office.svg" alt="Icône appartement" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -216,7 +223,7 @@ export default function Home() {
                 <div className="feature-box-icon mb-10px">
                   <div className="text-uppercase alt-font fw-700 text-base-color fs-12 lh-22 bg-base-color-transparent border-radius-4px position-absolute left-18px top-18px ps-10px pe-10px">20K</div>
                   <Link to="/services" className="d-block">
-                    <img src="/images/demo-real-estate-icon-shop.svg" alt="" />
+                    <img src="/images/demo-real-estate-icon-shop.svg" alt="Icône bureau" />
                   </Link>
                 </div>
                 <div className="feature-box-content">
@@ -242,7 +249,7 @@ export default function Home() {
           <div className="row row-cols-1 row-cols-xl-3 row-cols-md-2 justify-content-center scroll-animate" data-animate-type="fadeInUp">
             <div className="col mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-electrique.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-electrique.jpg" alt="Service installation électrique par Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Installation électrique</h4>
@@ -253,7 +260,7 @@ export default function Home() {
             </div>
             <div className="col mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-domotique.webp" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-domotique.webp" alt="Service domotique maison intelligente Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Domotique</h4>
@@ -264,7 +271,7 @@ export default function Home() {
             </div>
             <div className="col mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-cameras.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-cameras.jpg" alt="Service caméras de surveillance Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Caméras de surveillance</h4>
@@ -275,7 +282,7 @@ export default function Home() {
             </div>
             <div className="col lg-mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-climatisation.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-climatisation.jpg" alt="Service climatisation et installation Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Climatisation</h4>
@@ -286,7 +293,7 @@ export default function Home() {
             </div>
             <div className="col sm-mb-30px">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-reseaux.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-reseaux.jpg" alt="Service réseaux wifi fibre optique Volt Construction" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Réseaux (wifi, fibre optique)</h4>
@@ -297,7 +304,7 @@ export default function Home() {
             </div>
             <div className="col">
               <div className="border-radius-6px overflow-hidden box-shadow-large bg-white">
-                <img src="/images/service-plomberie.jpg" alt="" className="w-100" style={{ height: 240, objectFit: "cover" }} />
+                <img src="/images/service-plomberie.jpg" alt="Service plomberie Volt Construction Marrakech" className="w-100" style={{ height: 240, objectFit: "cover" }} />
                 <div className="p-35px md-p-25px">
                   <div className="d-flex align-items-center mb-10px">
                     <h4 className="alt-font text-dark-gray fw-700 fs-22 mb-0">Plomberie</h4>
@@ -319,7 +326,7 @@ export default function Home() {
                 <div className="icon-with-text-style-08 mb-30px">
                   <div className="feature-box feature-box-left-icon overflow-hidden">
                     <div className="feature-box-icon">
-                      <img src="/images/demo-real-estate-icon-04.png" className="w-80px" alt="" />
+                      <img src="/images/demo-real-estate-icon-04.png" className="w-80px" alt="Icône installations aux normes Volt Construction" />
                     </div>
                     <div className="feature-box-content last-paragraph-no-margin">
                       <span className="text-dark-gray fs-19 alt-font mb-5px fw-600 d-block">Installations aux normes</span>
@@ -330,7 +337,7 @@ export default function Home() {
                 <div className="icon-with-text-style-08">
                   <div className="feature-box feature-box-left-icon overflow-hidden">
                     <div className="feature-box-icon">
-                      <img src="/images/demo-real-estate-icon-05.png" className="w-80px" alt="" />
+                      <img src="/images/demo-real-estate-icon-05.png" className="w-80px" alt="Icône techniciens certifiés Volt Construction" />
                     </div>
                     <div className="feature-box-content last-paragraph-no-margin">
                       <span className="text-dark-gray fs-19 alt-font mb-5px fw-600 d-block">Techniciens certifiés</span>
@@ -346,7 +353,7 @@ export default function Home() {
             </div>
             <div className="col-lg-6 offset-lg-1 position-relative">
               <figure className="position-relative mb-0 border-radius-6px overflow-hidden scroll-animate" data-animate-type="zoomIn">
-                <img src="/images/service-electrique.jpg" className="w-100 border-radius-6px" alt="" style={{ maxHeight: "450px", objectFit: "cover" }} />
+                <img src="/images/service-electrique.jpg" className="w-100 border-radius-6px" alt="Projet installation électrique Volt Construction" style={{ maxHeight: "450px", objectFit: "cover" }} />
                 <a href="https://youtube.com/shorts/8KG056KdF6c" className="absolute-middle-center text-center rounded-circle video-icon-box video-icon-large popup-vimeo">
                   <span>
                     <span className="video-icon bg-white">
@@ -399,42 +406,42 @@ export default function Home() {
                   <div className="swiper-wrapper">
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet1.jpeg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet1.jpeg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 1" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet2.jpg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet2.jpg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 2" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet3.jpeg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet3.jpeg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 3" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet4.jpg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet4.jpg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 4" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet5.jpeg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet5.jpeg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 5" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet6.jpeg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet6.jpeg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 6" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet7.jpg" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet7.jpg" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 7" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                     <div className="swiper-slide">
                       <figure className="m-0 overflow-hidden position-relative border-radius-6px">
-                        <img src="/images/projet8.webp" className="w-100 border-radius-6px" alt="" style={{ height: 300, objectFit: "cover" }} />
+                        <img src="/images/projet8.webp" className="w-100 border-radius-6px" alt="Réalisation Volt Construction projet 8" style={{ height: 300, objectFit: "cover" }} />
                       </figure>
                     </div>
                   </div>
@@ -516,7 +523,7 @@ export default function Home() {
           <div className="row align-items-center justify-content-center">
             <div className="col-lg-6 text-end md-mb-50px">
               <figure className="position-relative m-0 scroll-animate" data-animate-type="zoomIn">
-                <img src="/images/demo-real-estate-09.jpg" className="w-90 border-radius-6px" alt="" />
+                <img src="/images/demo-real-estate-09.jpg" className="w-90 border-radius-6px" alt="Volt Construction avis clients satisfaction" />
                 <figcaption className="position-absolute bg-dark-gray border-radius-10px box-shadow-quadruple-large bottom-100px xs-bottom-minus-20px left-minus-30px md-left-0px w-230px xs-w-210px text-center last-paragraph-no-margin animation-float">
                   <div className="bg-white pt-35px pb-35px border-radius-8px mb-15px position-relative top-minus-1px">
                     <h1 className="fw-700 ls-minus-3px text-dark-gray mb-0 alt-font">50</h1>
@@ -619,7 +626,7 @@ export default function Home() {
                   <div key={post.id} className="col mb-30px">
                     <div className="card bg-transparent border-0 h-100">
                       <div className="blog-image position-relative overflow-hidden border-radius-6px">
-                        <Link to={"/blog/" + post.slug}><img src={post.image} alt="" style={{ height: 220, objectFit: "cover", width: "100%" }} /></Link>
+                        <Link to={"/blog/" + post.slug}><img src={post.image} alt={post.altText || post.title} style={{ height: 220, objectFit: "cover", width: "100%" }} /></Link>
                       </div>
                       <div className="card-body px-0 pb-30px pt-30px xs-pb-15px">
                         <span className="fs-14 text-uppercase"><Link to="#" className="text-dark-gray fw-500 categories-text">{post.category}</Link><Link to="#" className="blog-date">{new Date(post.date).toLocaleDateString("fr-FR")}</Link></span>

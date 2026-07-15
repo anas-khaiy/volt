@@ -31,9 +31,9 @@ export default function Header() {
         <div className="container-fluid">
           <div className="col-auto">
             <Link className="navbar-brand" to="/" onClick={closeMenu}>
-              <img src="/images/logo2.png" alt="" className="default-logo" style={{ height: "40px" }} />
-              <img src="/images/logo2.png" alt="" className="alt-logo" style={{ height: "40px" }} />
-              <img src="/images/logo2.png" alt="" className="mobile-logo" style={{ height: "40px" }} />
+              <img src="/images/logo2.png" alt="Volt Construction logo" className="default-logo" style={{ height: "40px" }} />
+              <img src="/images/logo2.png" alt="Volt Construction logo" className="alt-logo" style={{ height: "40px" }} />
+              <img src="/images/logo2.png" alt="Volt Construction logo" className="mobile-logo" style={{ height: "40px" }} />
             </Link>
           </div>
           <div className="col-auto menu-order left-nav ps-60px lg-ps-20px">

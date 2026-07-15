@@ -2,6 +2,8 @@ import { useState } from "react";
 import { db } from "../firebase";
 import { ref, push } from "firebase/database";
 
+import { Helmet } from "react-helmet-async";
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -30,6 +32,11 @@ export default function Contact() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact - Volt Construction | Devis Gratuit Marrakech</title>
+        <meta name="description" content="Contactez Volt Construction pour un devis gratuit en installation électrique, domotique, climatisation, caméras, réseaux et plomberie à Marrakech." />
+        <link rel="canonical" href="https://volt-construction-app.firebaseapp.com/contact" />
+      </Helmet>
       <section className="cover-background page-title-big-typography ipad-top-space-margin">
         <div className="container">
           <div className="row align-items-center align-items-lg-end justify-content-center extra-very-small-screen g-0">
@@ -47,7 +54,7 @@ export default function Contact() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12 p-0 position-relative">
-              <img src="/images/projet2.jpg" alt="" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
+              <img src="/images/projet2.jpg" alt="Contactez Volt Construction - Devis gratuit Marrakech" className="w-100" style={{ maxHeight: "500px", objectFit: "cover" }} />
               <div className="alt-font fw-600 fs-350 lg-fs-275 md-fs-250 sm-fs-200 xs-fs-140 ls-minus-5px xs-ls-minus-2px position-absolute right-minus-50px lg-right-minus-0px bottom-minus-80px md-bottom-minus-60px xs-bottom-minus-40px text-white text-outline text-outline-width-3px">contact</div>
             </div>
           </div>
