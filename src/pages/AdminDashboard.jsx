@@ -101,13 +101,22 @@ export default function AdminDashboard() {
   async function handleImageUpload(file) {
     setUploading(true);
     try {
+      const url = API_BASE + "/api/upload";
       const fd = new FormData();
       fd.append("image", file);
-      const res = await fetch(API_BASE + "/api/upload", { method: "POST", body: fd });
-      const data = await res.json();
+      const res = await fetch(url, { method: "POST", body: fd });
+      const text = await res.text();
+      console.log("Upload response URL:", url);
+      console.log("Upload status:", res.status);
+      console.log("Upload response body:", text);
+      let data;
+      try { data = JSON.parse(text); } catch {
+        throw new Error("Server returned HTML (not JSON). URL called: " + url + " — Did you deploy the Node.js server?");
+      }
       if (!res.ok) throw new Error(data.error || "Upload failed");
       setForm((prev) => ({ ...prev, image: data.url }));
     } catch (err) {
+      console.error("Upload error:", err);
       alert("Upload error: " + err.message);
     }
     setUploading(false);
