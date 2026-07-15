@@ -4,7 +4,7 @@ import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { ref, push, get, remove } from "firebase/database";
 
-const API_BASE = import.meta.env.VITE_API_URL || "https://volt-construction.com";
+const API_BASE = "";
 
 const CATEGORIES = ["Électricité", "Domotique", "Climatisation", "Sécurité", "Plomberie", "Réseaux"];
 
