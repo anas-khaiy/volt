@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const distDir = path.join(__dirname, "..", "dist");
+const distDir = path.join(__dirname, "dist");
 const uploadDir = path.join(__dirname, "uploads");
 
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
@@ -39,9 +39,7 @@ app.use(express.static(distDir));
 
 app.post("/api/upload", (req, res) => {
   upload.single("image")(req, res, (err) => {
-    if (err) {
-      return res.status(400).json({ error: err.message || "Upload failed" });
-    }
+    if (err) return res.status(400).json({ error: err.message || "Upload failed" });
     if (!req.file) return res.status(400).json({ error: "No file provided" });
 
     const url = "/uploads/" + req.file.filename;
@@ -63,5 +61,5 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(distDir, "index.html"));
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server running on port " + PORT));

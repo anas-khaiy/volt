@@ -9,6 +9,13 @@ lerna-debug.log*
 
 node_modules
 dist
+uploads/*.jpg
+uploads/*.jpeg
+uploads/*.png
+uploads/*.webp
+uploads/*.gif
+uploads/*.svg
+!uploads/.gitkeep
 dist-ssr
 *.local
 

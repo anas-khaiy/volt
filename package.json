@@ -8,11 +8,15 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "start": "npm run build && node server/index.js"
+    "postinstall": "vite build",
+    "start": "node index.js"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "firebase": "^12.16.0",
+    "multer": "^2.0.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-helmet-async": "^3.0.0",
